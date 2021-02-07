@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_07_232609) do
+ActiveRecord::Schema.define(version: 2021_02_07_233453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2021_02_07_232609) do
     t.integer "serving"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.uuid "steps_id", null: false
+    t.index ["steps_id"], name: "index_recipes_on_steps_id"
   end
 
   create_table "steps", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -45,4 +47,5 @@ ActiveRecord::Schema.define(version: 2021_02_07_232609) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "recipes", "steps", column: "steps_id"
 end
