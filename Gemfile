@@ -26,7 +26,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 #handle nested forms
-gem "cocoon"
+# gem "cocoon"
 
 #Adding Authentication with Devise
 gem 'devise'
