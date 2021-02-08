@@ -25,6 +25,15 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+#Adding Authentication with Devise
+gem 'devise'
+
+#Authorizations library that allows you to define the rules
+gem 'cancancan', git: 'https://github.com/CanCanCommunity/cancancan.git'
+
+#Admin Users – Rails Admin gem
+gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
