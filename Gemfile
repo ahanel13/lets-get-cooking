@@ -25,6 +25,9 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+#Authorizations library that allows you to define the rules
+gem 'cancancan'
+
 #Admin Users – Rails Admin gem
 gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
 
