@@ -28,8 +28,6 @@ gem 'jbuilder', '~> 2.7'
 #handle nested forms
 # gem "cocoon"
 
-gem 'bootsnap'
-
 #Adding Authentication with Devise
 gem 'devise'
 
