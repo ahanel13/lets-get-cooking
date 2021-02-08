@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/CanCanCommunity/cancancan.git
+  revision: b6012b1b0ab79638e5ca556817ff6d61087eb7a7
+  specs:
+    cancancan (3.2.1)
+
+GIT
   remote: https://github.com/sferik/rails_admin.git
   revision: f0c46f1e128b5d31d812ff3a80d15db8692c848b
   specs:
@@ -89,7 +95,6 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.3)
-    cancancan (3.2.1)
     capybara (3.35.3)
       addressable
       mini_mime (>= 0.1.3)
@@ -266,7 +271,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
-  cancancan
+  cancancan!
   capybara (>= 3.26)
   devise
   jbuilder (~> 2.7)

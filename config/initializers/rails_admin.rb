@@ -1,14 +1,17 @@
 RailsAdmin.config do |config|
+  config.parent_controller = 'ApplicationController'
 
   ### Popular gems integration
 
   ## == Devise ==
-  # config.authenticate_with do
-  #   warden.authenticate! scope: :user
-  # end
-  # config.current_user_method(&:current_user)
+  config.authenticate_with do
+    warden.authenticate! scope: :user
+  end
+  config.current_user_method(&:current_user)
 
   ## == CancanCan ==
+  puts '-'*100
+  puts :user.inspect
   config.authorize_with :cancancan
 
   ## == Pundit ==
