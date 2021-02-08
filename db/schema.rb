@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_08_032825) do
+ActiveRecord::Schema.define(version: 2021_02_08_034031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 2021_02_08_032825) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.uuid "steps_id", null: false
+    t.uuid "comments_id", null: false
+    t.index ["comments_id"], name: "index_recipes_on_comments_id"
     t.index ["steps_id"], name: "index_recipes_on_steps_id"
   end
 
@@ -79,5 +81,6 @@ ActiveRecord::Schema.define(version: 2021_02_08_032825) do
   end
 
   add_foreign_key "comments", "users"
+  add_foreign_key "recipes", "comments", column: "comments_id"
   add_foreign_key "recipes", "steps", column: "steps_id"
 end
