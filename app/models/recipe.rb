@@ -5,4 +5,5 @@ class Recipe < ApplicationRecord
     belongs_to :tags
 
     has_many :comments, dependent: :destroy
+    has_many :recipeingredients
 end
