@@ -10,8 +10,6 @@ RailsAdmin.config do |config|
   config.current_user_method(&:current_user)
 
   ## == CancanCan ==
-  puts '-'*100
-  puts :user.inspect
   config.authorize_with :cancancan
 
   ## == Pundit ==
