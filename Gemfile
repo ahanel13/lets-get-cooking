@@ -25,6 +25,9 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+#Admin Users – Rails Admin gem
+gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
+
 #Adding Authentication with Devise
 gem 'devise'
 
