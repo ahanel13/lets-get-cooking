@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_08_035040) do
+ActiveRecord::Schema.define(version: 2021_02_08_152734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2021_02_08_035040) do
     t.uuid "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.uuid "recipe_id", null: false
+    t.index ["recipe_id"], name: "index_comments_on_recipe_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -50,16 +52,14 @@ ActiveRecord::Schema.define(version: 2021_02_08_035040) do
     t.integer "serving"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.uuid "steps_id", null: false
-    t.uuid "comments_id", null: false
-    t.index ["comments_id"], name: "index_recipes_on_comments_id"
-    t.index ["steps_id"], name: "index_recipes_on_steps_id"
   end
 
   create_table "steps", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "instruction"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.uuid "recipe_id", null: false
+    t.index ["recipe_id"], name: "index_steps_on_recipe_id"
   end
 
   create_table "tags", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -92,10 +92,10 @@ ActiveRecord::Schema.define(version: 2021_02_08_035040) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "recipes"
   add_foreign_key "comments", "users"
   add_foreign_key "recipe_ingredients", "ingredients"
   add_foreign_key "recipe_ingredients", "recipes"
   add_foreign_key "recipe_ingredients", "units"
-  add_foreign_key "recipes", "comments", column: "comments_id"
-  add_foreign_key "recipes", "steps", column: "steps_id"
+  add_foreign_key "steps", "recipes"
 end

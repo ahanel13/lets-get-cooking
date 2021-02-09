@@ -14,3 +14,5 @@ Turbolinks.start()
 ActiveStorage.start()
 
 global.toastr = require("toastr")
+require('./nested-forms/addFields')
+require('./nested-forms/removeFields')
