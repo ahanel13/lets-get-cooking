@@ -31,6 +31,18 @@
     <%= form.text_field :serving %>
   </div>
 
+  <div class="feild">
+    <h3>Instructions</h3>
+      <%= form.fields_for :steps do |step_form| %>
+        <%= render 'step_fields', f: step_form %>
+      <% end %>
+      <div>
+        <%= link_to_add_fields "Add Step", form, :steps%>
+        <%# :class => "btn btn-secondary btn-sml" %>
+      </div>
+      <br>
+    </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
