@@ -1,27 +1,17 @@
-<%= form_with(model: unit) do |form| %>
-  <% if unit.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
-
-      <ul>
-        <% unit.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<form action="/units" accept-charset="UTF-8" method="post">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <label for="unit_name">Name</label>
+    <input type="text" name="unit[name]" id="unit_name">
   </div>
 
   <div class="field">
-    <%= form.label :abreviation %>
-    <%= form.text_field :abreviation %>
+    <label for="unit_abreviation">Abreviation</label>
+    <input type="text" name="unit[abreviation]" id="unit_abreviation">
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <input type="submit" name="commit" value="Create Unit" data-disable-with="Create Unit">
   </div>
-<% end %>
+</form>
