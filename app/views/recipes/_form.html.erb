@@ -1,49 +1,35 @@
-<%= form_with(model: recipe) do |form| %>
-  <% if recipe.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
-
-      <ul>
-        <% recipe.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<form action="/recipes" accept-charset="UTF-8" method="post">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <label for="recipe_name">Name</label>
+    <input type="text" name="recipe[name]" id="recipe_name" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
   </div>
 
   <div class="field">
-    <%= form.label :preptime %>
-    <%= form.text_field :preptime %>
+    <label for="recipe_preptime">Preptime</label>
+    <input type="text" name="recipe[preptime]" id="recipe_preptime">
   </div>
 
   <div class="field">
-    <%= form.label :cooktime %>
-    <%= form.text_field :cooktime %>
+    <label for="recipe_cooktime">Cooktime</label>
+    <input type="text" name="recipe[cooktime]" id="recipe_cooktime">
   </div>
 
   <div class="field">
-    <%= form.label :serving %>
-    <%= form.text_field :serving %>
+    <label for="recipe_serving">Serving</label>
+    <input type="text" name="recipe[serving]" id="recipe_serving">
   </div>
 
   <div class="feild">
     <h3>Instructions</h3>
-      <%= form.fields_for :steps do |step_form| %>
-        <%= render 'step_fields', f: step_form %>
-      <% end %>
-      <div>
-        <%= link_to_add_fields "Add Step", form, :steps%>
-        <%# :class => "btn btn-secondary btn-sml" %>
+            <div>
+        <a class="add_fields" data-id="24200" data-fields="<div class=&quot;nested-fields&quot;>        <input type=&quot;hidden&quot; value=&quot;false&quot; name=&quot;recipe[steps_attributes][24200][_destroy]&quot; id=&quot;recipe_steps_attributes_24200__destroy&quot; />        <div>            <input type=&quot;text&quot; name=&quot;recipe[steps_attributes][24200][instruction]&quot; id=&quot;recipe_steps_attributes_24200_instruction&quot; />            <a class=&quot;remove_fields&quot; href=&quot;#&quot;>Remove Step</a>        </div></div><!-- nested fields -->" href="#">Add Step</a>
       </div>
       <br>
     </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <input type="submit" name="commit" value="Create Recipe" data-disable-with="Create Recipe">
   </div>
-<% end %>
+</form>
