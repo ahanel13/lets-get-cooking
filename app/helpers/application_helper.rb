@@ -2,8 +2,6 @@ module ApplicationHelper
     # This method creates a link with `data-id` `data-fields` attributes. These attributes are used to create new instances of the nested fields through Javascript.
     def link_to_add_fields(name, f, association)
 
-        puts "TESTING"
-
         # Takes an object (@person) and creates a new instance of its associated model (:addresses)
         # To better understand, run the following in your terminal:
         # rails c --sandbox
@@ -39,4 +37,14 @@ module ApplicationHelper
         link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
 
     end
+
+    # This methods defines Flash message that will be render using toastr
+    def toastr_flash
+        flash.each_with_object([]) do |(type, message), flash_messages|
+          type = 'success' if type == 'notice'
+          type = 'error' if type == 'alert'
+          text = "<script>toastr.#{type}('#{message}', '', { closeButton: true, progressBar: true })</script>"
+          flash_messages << text.html_safe if message
+        end.join("\n").html_safe
+      end
 end
