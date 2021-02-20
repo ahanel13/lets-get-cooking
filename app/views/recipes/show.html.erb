@@ -34,12 +34,13 @@
   <%# only signed in users are able to add comments %>
   <% if user_signed_in? %>
     <div>
-      <input type="button" id="clear_button" value="Clear" onclick="clearCommentArea()"> 
-      <textarea id='comment_textarea' rows=20 cols=90></textarea>
+      <%= render 'comment', comment: @comment %>
     </div>
   <% else %>
     <p> <%= link_to('Login', new_user_session_path)  %> to comment</p>
   <% end %>
+  
+
 
 </div>
 
