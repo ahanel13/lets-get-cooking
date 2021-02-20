@@ -39,7 +39,9 @@
   <% else %>
     <p> <%= link_to('Login', new_user_session_path)  %> to comment</p>
   <% end %>
-  
+  <% @recipe.comments.each do |comment| %>
+    <p><%=comment.inspect%></p>
+  <% end %>
 
 
 </div>
