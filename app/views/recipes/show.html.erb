@@ -34,19 +34,14 @@
   <%# only signed in users are able to add comments %>
   <% if user_signed_in? %>
     <div>
-      <%# <textarea id="output" placeholder="Add a comment..."></textarea> %>
-      <input type="button" id="outout" value="Clear" onclick="eraseText()"> 
-      <textarea id='output' rows=20 cols=90></textarea>
-      <%# <input type="button" value="Clear" onclick="javascript:eraseText();"> %>
+      <input type="button" id="clear_button" value="Clear" onclick="clearCommentArea()"> 
+      <textarea id='comment_textarea' rows=20 cols=90></textarea>
     </div>
   <% else %>
     <p> <%= link_to('Login', new_user_session_path)  %> to comment</p>
   <% end %>
 
 </div>
-
-<button onclick="greet_user('Dire', 'Straits')">Hey!</button>
-
 
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>
