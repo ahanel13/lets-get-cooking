@@ -1,3 +1,5 @@
+<%= javascript_pack_tag 'recipes' %>
+
 <p>
   <strong>Name:</strong>
   <%= @recipe.name %>
@@ -24,6 +26,25 @@
       <li><%= @step.instruction %></li>
     <% end %>
   </ol>
+
+<%# Comment Section %>
+<div>
+  <h2>Comments<h2>
+  
+  <%# only signed in users are able to add comments %>
+  <% if user_signed_in? %>
+    <div>
+      <%= render 'comment', comment: @comment %>
+    </div>
+  <% else %>
+    <p> <%= link_to('Login', new_user_session_path)  %> to comment</p>
+  <% end %>
+  <% @recipe.comments.each do |comment| %>
+    <p><%=comment.inspect%></p>
+  <% end %>
+
+
+</div>
 
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>
