@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2021_02_08_152734) do
   end
 
   create_table "tags", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "tag"
+    t.string "name"
     t.uuid "recipes_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
