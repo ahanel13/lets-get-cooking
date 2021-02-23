@@ -12,3 +12,14 @@ user.password = 'password'
 user.password_confirmation = 'password'
 user.superadmin_role = true
 user.save!
+
+Tag.create(name: "Breakfast")
+Tag.create(name: "Brunch")
+Tag.create(name: "Lunch")
+Tag.create(name: "Dinner")
+Tag.create(name: "Vegan")
+Tag.create(name: "vegetarian")
+Tag.create(name: "Snack")
+Tag.create(name: "Healthy")
+Tag.create(name: "Under 500 Calories")
+Tag.create(name: "Under 1000 Calories")
