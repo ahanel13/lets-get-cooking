@@ -15,3 +15,20 @@
  */
 @import "bootstrap/scss/bootstrap"; 
 @import "toastr/toastr";
+
+// Navbar Styles
+#NavSearchBar{
+    margin-right: 5vw !important;
+    display: flex;
+    width: 40vw;
+}
+
+#NavSearchBar input{
+    border-radius: 25px;
+}
+
+#NavSearchBar button{
+    margin-left: -85px;
+    border-radius: 25px;
+}
+
