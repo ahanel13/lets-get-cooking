@@ -16,7 +16,31 @@
 @import "bootstrap/scss/bootstrap"; 
 @import "toastr/toastr";
 
+* {
+    margin: 0;
+}
+
 // Navbar Styles
+nav {
+    background-color: #FFBC39;
+    height: 10vh;
+}
+
+nav a, a:hover{
+    color: white;
+    font-size: 20px;
+    background-color: transparent;
+}
+
+.whiteNavLink {
+    color: white !important;
+    font-weight: bold;
+}
+
+#NavbarIcon {
+    height: 9vh;
+}
+
 #NavSearchBar{
     margin-right: 5vw !important;
     display: flex;
@@ -30,5 +54,18 @@
 #NavSearchBar button{
     margin-left: -85px;
     border-radius: 25px;
+    background-color: white;
 }
 
+#NavSearchBar button:hover{
+    background-color: rgb(2, 177, 2);
+}
+
+#RegisterLoginSection{
+    margin-right: 2vw;
+    color: white;
+}
+
+#RegisterLoginSection a{
+    color: white;
+}
