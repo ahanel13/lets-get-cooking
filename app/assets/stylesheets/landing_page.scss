@@ -14,11 +14,12 @@ body, html {
     transform: translate(-50%, -50%);
     h1 {
         width: 100vw;
-        font-size: 300px;
+        font-size: 150px;
         font-weight: bold;
     }
 }
 .image {
+    overflow: hidden;
     height: 90vh;
     background-position: center;
     background-repeat: no-repeat;
