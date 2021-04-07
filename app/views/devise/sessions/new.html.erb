@@ -1,6 +1,7 @@
 <h2>Log in</h2>
 
-<form class="new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post" data-bitwarden-watching="1"><input type="hidden" name="authenticity_token" value="OjXRR1E7jPlkQAR5GGQadRLOG39_Bsns00oM4ESW9U_G6wIRo5dDrIAcypU0ZDPoUOsVr0ysIsB6wvcJGy9SIg">
+<form class="new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post" data-bitwarden-watching="1">
+<input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %>>
   <div class="field">
     <label for="user_email">Email</label><br>
     <input autofocus="autofocus" autocomplete="email" type="email" value="" name="user[email]" id="user_email">
