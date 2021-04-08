@@ -1,4 +1,5 @@
 <h2>Sign up</h2>
+<%= render "devise/shared/error_messages", resource: resource %>
 
 <form class="new_user" id="new_user" action="/users" accept-charset="UTF-8" method="post">
 <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %>>
