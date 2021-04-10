@@ -8,14 +8,13 @@
 <hr/>
 <div id="SearchResults">
     <% @recipes.each do |recipe| %>
+      <div class="RecipeCard">
         <%= link_to image_tag(recipe.image), "/recipes/" + recipe.id.to_s %>
         <%= recipe.name %>
         <%= recipe.preptime %>
         <%= recipe.cooktime %>
         <%= recipe.serving %>
-        <%= link_to 'Show', recipe %>
-        <%= link_to 'Edit', edit_recipe_path(recipe) %>
-        <%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
     <% end %>
 <div>
 
