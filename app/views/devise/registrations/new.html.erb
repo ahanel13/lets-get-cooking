@@ -1,0 +1,38 @@
+<%= render "devise/shared/error_messages", resource: resource %>
+
+<div class="login_image">
+
+  <img id="LoginPageBackground" src="<%= asset_path('gareth-hubbard-qPcSUERqBAc-unsplash.jpg')%>">
+
+  <div class="login_box">
+    <h2>Sign up</h2>
+
+    <form class="new_user" id="new_user" action="/users" accept-charset="UTF-8" method="post">
+    <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %>>
+  
+
+      <div class="field">
+        <label for="user_email">Email</label><br>
+        <input autofocus="autofocus" autocomplete="email" type="email" value="" name="user[email]" id="user_email">
+      </div>
+
+      <div class="field">
+        <label for="user_password">Password</label>
+        <em>(6 characters minimum)</em>
+        <br>
+        <input autocomplete="new-password" type="password" name="user[password]" id="user_password">
+      </div>
+
+      <div class="field">
+        <label for="user_password_confirmation">Password confirmation</label><br>
+        <input autocomplete="new-password" type="password" name="user[password_confirmation]" id="user_password_confirmation">
+      </div>
+
+      <div class="actions">
+        <input type="submit" name="commit" value="Sign up" data-disable-with="Sign up">
+      </div>
+    </form>
+
+    <%= render "devise/shared/links" %>
+  </div>  
+</div>

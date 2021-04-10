@@ -73,3 +73,84 @@ nav a, a:hover{
 #RegisterLoginSection a{
     color: white;
 }
+
+.login_image {
+    overflow: hidden;
+    height: 90vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+#LoginPageBackground{
+    width: 100vw;
+    display: cover;
+}
+
+.field {
+    margin-top: 30px;
+}
+
+.login_box {
+    text-align: center;
+    color: #FFBC39;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 500px;
+    border: 15px;
+    border-radius: 30px;
+    padding: 50px;
+    margin: 20px;
+
+    h2 {
+        font-weight: bold;
+        font-size: 70px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+}
+
+#ProfileIcon{
+    width: 60px;
+}
+
+// Acount Page styles
+#SideNav {
+    width: 22vw;
+    height: 90vh;
+    background-color: grey;
+    margin: 0;
+    position: absolute;
+}
+
+#MainContent {
+    width: 78vw;
+    height: 90vh;
+    background-color: lightblue;
+    right: 0;
+    margin: 0;
+    position: absolute;
+}
+
+.BasicContainer{
+    background-color: lightcoral;
+    width: 90%;
+    height: 82%;
+    margin: 50px auto;
+    border-radius: 20px;
+}
+
+#SavedRecipes{
+}
+
+#SavedPantry{
+}
+
+#EditAccount{
+}
