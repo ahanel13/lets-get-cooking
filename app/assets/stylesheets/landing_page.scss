@@ -1,3 +1,73 @@
+html{
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+
+  .landing_page {
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    max-width: 1500px;
+    // padding-left: 3%;
+    // padding-right: 3%;
+    margin: 0;
+  }
+//   h1{
+//     font-size: 100px;
+//     line-height: 1;;
+// }
+// h2{
+//     background-color:#F0E68C;
+// }
+// h1,h2{
+//     font-family: 'Caveat', cursive;
+//     font-weight: 400;
+//     margin:0;
+// }
+/* img{
+    width:450px;
+    height: 450px;
+    
+    padding: 30px;
+    
+
+} */
+.carousel-inner
+{
+    font-size: 25px;
+}
+ 
+  .about-section {
+ background-image: url("https://images.unsplash.com/photo-1596040033229-a9821ebd058d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80")
+ ;
+ background-repeat: no-repeat;
+ background-size: cover;
+ height: 500px;
+    padding: 25px;
+   text-align: center;
+    background-color: #808000;
+    color: white;
+  }
+  
+  
+  .title {
+    color: grey;
+  }
+
+
+    .contact-list{
+        text-align: center;
+        justify-content: center;
+        padding:5px;
+        background: #DCDCDC;
+        color: #F7FFF7;
+        margin: 0;
+  padding: 0;
+        
+    
+    }
 // Place all the styles related to the landingPage controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
