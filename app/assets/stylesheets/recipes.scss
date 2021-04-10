@@ -1,3 +1,114 @@
 // Place all the styles related to the Recipes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+#leftColumn {
+    width: 40vw;
+    left: 0;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#rightColumn {
+    width: 60vw;
+    right: 0;
+    position: absolute;
+    display: flex;
+    padding-top: 10vh;
+    padding-right: 3vw;
+    flex-direction: column;
+}
+
+#ImageUpload{
+    height: 50vh;
+    width: 70%;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10vh;
+}
+
+#ImageUpload input{
+    margin: auto;
+}
+
+#rightColumn input{
+    margin-bottom: 2vh;
+}
+
+input {
+    border-radius: 5px;
+    border: hidden;
+    border-bottom: 2px solid rgba(211, 211, 211, 0.616);
+    border: 1px solid rgb(202, 202, 202);
+}
+
+#recipe_name {
+    font-size: 50px;
+    margin-bottom: 3vh;
+    width: 95%;
+}
+
+.recipe_meta_data{
+    width: 30%;
+}
+
+#newRecipeSubmit{
+    position: relative;
+    bottom: 0;
+    width: min-content;
+    margin: 2.5vh 10vw 5vh 47.5vw;
+    background-color: #FFBC39;
+    border: hidden;
+    color: white;
+    width: 156px;
+    height: 50px;
+    border-radius: 25px;
+    
+}
+
+#recipe_description{
+    width: 95%;
+    height: 28.5vh;
+}
+
+#addInstructionsContainer {
+    input {
+        height: 7.5vh;
+        width: 95%;
+    }
+
+    .remove_fields {
+        position: relative;
+        right: 0;
+        margin-top: -50px;
+    }
+}
+
+#addRecipeMetaData{
+    input {
+
+    }
+}
+        
+#SearchResults{
+    display: flex;
+    // add item spacing
+}
+
+.RecipeCard{
+    width: 20vw;
+    height: 40vh;
+    background-color: grey;
+    border-radius: 15px;
+    overflow: hidden;
+
+    img {
+        width: 25vw;
+    }
+}
