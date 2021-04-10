@@ -93,5 +93,19 @@ input {
 #addRecipeMetaData{
     input {
         
+#SearchResults{
+    display: flex;
+    // add item spacing
+}
+
+.RecipeCard{
+    width: 20vw;
+    height: 40vh;
+    background-color: grey;
+    border-radius: 15px;
+    overflow: hidden;
+
+    img {
+        width: 25vw;
     }
 }
