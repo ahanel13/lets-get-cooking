@@ -2,35 +2,3 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-#SideNav {
-    width: 22vw;
-    height: 90vh;
-    background-color: grey;
-    margin: 0;
-    position: absolute;
-}
-
-#MainContent {
-    width: 78vw;
-    height: 90vh;
-    background-color: lightblue;
-    right: 0;
-    margin: 0;
-    position: absolute;
-}
-
-.BasicContainer{
-    background-color: lightcoral;
-    width: 90%;
-    height: 82%;
-    margin: 50px auto;
-    border-radius: 20px;
-}
-
-#SavedRecipes{
-    display: none;
-}
-
-#SavedPantry{
-     display: none;
-}

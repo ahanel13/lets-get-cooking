@@ -4,4 +4,6 @@ class AccountPageController < ApplicationController
     # GET /account or /account.json
     def index
     end
+
+    
 end
