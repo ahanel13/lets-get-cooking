@@ -4,6 +4,7 @@ class RecipesController < ApplicationController
   # GET /recipes or /recipes.json
   def index
     @recipes = Recipe.all
+    puts @recipes.inspect
   end
 
   # GET /recipes/1 or /recipes/1.json
@@ -66,6 +67,6 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:name, :preptime, :cooktime, :serving, steps_attributes:[:id, :instruction, :_destroy])
+      params.require(:recipe).permit(:name, :preptime, :cooktime, :serving, :description, :image, steps_attributes:[:id, :instruction, :_destroy])
     end
 end

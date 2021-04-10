@@ -1,3 +1,5 @@
+<%= render "devise/shared/error_messages", resource: resource %>
+
 <div class="login_image">
 
   <img id="LoginPageBackground" src="<%= asset_path('gareth-hubbard-qPcSUERqBAc-unsplash.jpg')%>">
@@ -5,7 +7,8 @@
   <div class="login_box">
     <h2>Sign up</h2>
 
-    <form class="new_user" id="new_user" action="/users" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="ap6puTjdUosTxGJ6unFtwSAdMXtb9ukiIBmazZpnKPcjxeeFtWT76ieRANar9iTS4P2cAxSopTOaKQJd86AkXQ">
+    <form class="new_user" id="new_user" action="/users" accept-charset="UTF-8" method="post">
+    <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %>>
   
 
       <div class="field">

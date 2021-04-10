@@ -20,6 +20,11 @@
   <%= @recipe.serving %>
 </p>
 
+<img src=<%=(url_for(@recipe.image))%>>
+
+<p><%= @recipe.description%></p>
+
+
 <h3>Instructions</h3>
   <ol>
     <% for @step in @recipe.steps %>
