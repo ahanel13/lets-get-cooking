@@ -5,5 +5,9 @@ class AccountPageController < ApplicationController
     def index
     end
 
+    # GET /account/recipes or /account.json
+    def recipes
+    end
+
     
 end

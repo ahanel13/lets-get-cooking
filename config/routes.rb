@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   resources :account_page 
   
   get '/account', to: 'account_page#index'
+  get '/account/recipes', to: 'account_page#recipes'
   root to: "landing_page#index"
 end
