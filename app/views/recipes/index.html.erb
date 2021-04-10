@@ -2,9 +2,9 @@
 <div id="CurrentPantry">
 
 </div>
-<form>
-  <input>
-</form>
+<%= form_tag "/recipes", method: "GET" do %>
+
+<% end %>
 <hr/>
 <div id="SearchResults">
     <% @recipes.each do |recipe| %>
@@ -17,4 +17,3 @@
       </div>
     <% end %>
 <div>
-
