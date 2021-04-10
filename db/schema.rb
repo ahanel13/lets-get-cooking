@@ -83,10 +83,10 @@ ActiveRecord::Schema.define(version: 2021_04_10_000729) do
   end
 
   create_table "recipes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name"
-    t.integer "preptime"
-    t.integer "cooktime"
-    t.integer "serving"
+    t.string "name", null: false
+    t.integer "preptime", null: false
+    t.integer "cooktime", null: false
+    t.integer "serving", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "description", null: false
