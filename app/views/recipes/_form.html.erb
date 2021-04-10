@@ -1,4 +1,4 @@
-<form action="/recipes" accept-charset="UTF-8" method="post">
+<form action="/recipes" enctype="multipart/form-data" accept-charset="UTF-8" method="post">
 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
   <div class="field">
@@ -19,6 +19,16 @@
   <div class="field">
     <label for="recipe_serving">Serving</label>
     <input type="text" name="recipe[serving]" id="recipe_serving">
+  </div>
+
+  <div class="field">
+    <label for="recipe_image">Image</label>
+    <input type="file" name="recipe[image]" id="recipe_image" content_type="image">
+  </div>
+
+  <div class="field">
+    <label for="recipe_description">description</label>
+    <input type="textarea" name="recipe[description]" id="recipe_description">
   </div>
 
   <div class="feild">
