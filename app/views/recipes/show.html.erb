@@ -20,7 +20,7 @@
   <%= @recipe.serving %>
 </p>
 
-<%= image_tag(@recipe.image) %>
+<img src=<%=(url_for(@recipe.image))%>>
 
 <p><%= @recipe.description%></p>
 

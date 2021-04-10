@@ -1,31 +1,21 @@
-<h1>Recipes</h1>
+<h1>Current Pantry</h1>
+<div id="CurrentPantry">
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Preptime</th>
-      <th>Cooktime</th>
-      <th>Serving</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+</div>
+<form>
+  <input>
+</form>
+<hr/>
+<div id="SearchResults">
     <% @recipes.each do |recipe| %>
-      <tr>
-        <td><%= recipe.name %></td>
-        <td><%= recipe.preptime %></td>
-        <td><%= recipe.cooktime %></td>
-        <td><%= recipe.serving %></td>
-        <td><%= link_to 'Show', recipe %></td>
-        <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-        <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <%= link_to image_tag(recipe.image), "/recipes/" + recipe.id.to_s %>
+        <%= recipe.name %>
+        <%= recipe.preptime %>
+        <%= recipe.cooktime %>
+        <%= recipe.serving %>
+        <%= link_to 'Show', recipe %>
+        <%= link_to 'Edit', edit_recipe_path(recipe) %>
+        <%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
-  </tbody>
-</table>
+<div>
 
-<br>
-
-<%= link_to 'New Recipe', new_recipe_path %>
