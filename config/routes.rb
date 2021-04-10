@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :ingredients
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-
+  resources :account_page 
+  get '/account', to: 'account_page#index'
   root to: "landing_page#index"
 end
