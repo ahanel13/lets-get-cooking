@@ -5,6 +5,15 @@ class RecipesController < ApplicationController
   def index
     @recipes = Recipe.all
     puts @recipes.inspect
+      puts "+++===+++=+====+=====++===++++++++++=====++===+======="
+      puts params.inspect
+    
+    if params[:search_by_name] && params[:search_by_name] != ""
+      puts "+++===+++=+====+=====++===++++++++++=====++===+======="
+      @recipes = @recipes.where("name ILIKE ?", params[:search_by_name])
+    end
+        
+
   end
 
   # GET /recipes/1 or /recipes/1.json

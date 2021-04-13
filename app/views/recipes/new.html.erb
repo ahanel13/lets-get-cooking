@@ -2,7 +2,7 @@
 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <div id="leftColumn"> 
         <div id="ImageUpload">
-            <input type="file" name="recipe[image]" id="recipe_image" accept="image/*">
+            <input type="file" name="recipe[image]" id="recipe_image" accept="image/*" required>
         </div>
         <br>
         <h3>Ingredients</h3>
@@ -10,14 +10,14 @@
         <%= link_to 'Back', recipes_path %>
     </div>
     <div id="rightColumn">
-        <input type="text" name="recipe[name]" id="recipe_name" placeholder="Enter Recipe Title" autocomplete="off">
+        <input type="text" name="recipe[name]" id="recipe_name" placeholder="Enter Recipe Title" autocomplete="off" required>
         <h2>Description<h2>
-        <input type="textarea" name="recipe[description]" id="recipe_description">
+        <input type="textarea" name="recipe[description]" id="recipe_description" required>
         
         <div id="addRecipeMetaData">
-            <input type="number" name="recipe[preptime]" class="recipe_meta_data" id="recipe_preptime" placeholder="Enter Preptime (min)" autocomplete="off">
-            <input type="number" name="recipe[cooktime]" class="recipe_meta_data" id="recipe_cooktime" placeholder="Enter Cooktime (min)" autocomplete="off">
-            <input type="number" name="recipe[serving]" class="recipe_meta_data" id="recipe_serving" placeholder="Enter Serving" autocomplete="off">
+            <input type="number" name="recipe[preptime]" class="recipe_meta_data" id="recipe_preptime" placeholder="Enter Preptime (min)" autocomplete="off" required>
+            <input type="number" name="recipe[cooktime]" class="recipe_meta_data" id="recipe_cooktime" placeholder="Enter Cooktime (min)" autocomplete="off" required>
+            <input type="number" name="recipe[serving]" class="recipe_meta_data" id="recipe_serving" placeholder="Enter Serving" autocomplete="off" required>
         <div>
         <h3>Instructions</h3>
         <div id="addInstructionsContainer">
