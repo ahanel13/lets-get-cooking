@@ -26,7 +26,7 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @ingredients = Ingredient.all
-    @unts = Unit.all
+    @units = Unit.all
   end
 
   # GET /recipes/1/edit
