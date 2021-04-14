@@ -25,6 +25,8 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   def new
     @recipe = Recipe.new
+    @ingredients = Ingredient.all
+    @unts = Unit.all
   end
 
   # GET /recipes/1/edit
@@ -76,6 +78,6 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:name, :preptime, :cooktime, :serving, :description, :image, steps_attributes:[:id, :instruction, :_destroy])
+      params.require(:recipe).permit(:name, :preptime, :cooktime, :serving, :description, :image, steps_attributes:[:id, :instruction, :_destroy], recipe_ingredients_attributes:[:id, :unit_id, :quantity, :ingredient_id, :recipe_id, :_destroy])
     end
 end
