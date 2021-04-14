@@ -1,31 +1,48 @@
-<form action="/recipes" accept-charset="UTF-8" method="post" enctype="multipart/form-data">
-<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<%= form_with(model: @recipe) do |form| %>
+    <% if @recipe.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+        <ul>
+          <% @recipe.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
     <div id="leftColumn"> 
         <div id="ImageUpload">
-            <input type="file" name="recipe[image]" id="recipe_image" accept="image/*" required>
+            <%= form.file_field :image, :required => true, accept: "image/*"%>
         </div>
         <br>
         <h3>Ingredients</h3>
+        <%= form.fields_for :steps do |steps_form| %>
+            <%= render "step_fields", f: steps_form %>
+        <% end %>
+        <%= link_to_add_fields "Add Step", form, :steps %>
 
         <%= link_to 'Back', recipes_path %>
     </div>
+
     <div id="rightColumn">
-        <input type="text" name="recipe[name]" id="recipe_name" placeholder="Enter Recipe Title" autocomplete="off" required>
+        <%= form.text_field :name, placeholder:"Enter Recipe Title", autocomplete: "off"%>
+
         <h2>Description<h2>
-        <input type="textarea" name="recipe[description]" id="recipe_description" required>
-        
+        <%= form.text_field :description, :required => true, placeholder: "Add a recipe description" %>
+
         <div id="addRecipeMetaData">
-            <input type="number" name="recipe[preptime]" class="recipe_meta_data" id="recipe_preptime" placeholder="Enter Preptime (min)" autocomplete="off" required>
-            <input type="number" name="recipe[cooktime]" class="recipe_meta_data" id="recipe_cooktime" placeholder="Enter Cooktime (min)" autocomplete="off" required>
-            <input type="number" name="recipe[serving]" class="recipe_meta_data" id="recipe_serving" placeholder="Enter Serving" autocomplete="off" required>
-        <div>
+            <%= form.text_field :preptime, class: "recipe_meta_data", type: "number", :required => true, placeholder: "Enter Preptime (min)",   autocomplete: "off" %>
+            <%= form.text_field :cooktime, class: "recipe_meta_data", type: "number", :required => true, placeholder: "Enter Cooktime (min)",   autocomplete: "off" %>
+            <%= form.text_field :serving,  class: "recipe_meta_data", type: "number", :required => true, placeholder: "Enter Serving",          autocomplete: "off" %>
+        </div>
+
         <h3>Instructions</h3>
         <div id="addInstructionsContainer">
-            <a class="add_fields" data-id="24200" data-fields="<div class=&quot;nested-fields&quot;>        <input type=&quot;hidden&quot; value=&quot;false&quot; name=&quot;recipe[steps_attributes][24200][_destroy]&quot; id=&quot;recipe_steps_attributes_24200__destroy&quot; />        <div>            <input type=&quot;text&quot; name=&quot;recipe[steps_attributes][24200][instruction]&quot; id=&quot;recipe_steps_attributes_24200_instruction&quot; />            <a class=&quot;remove_fields&quot; href=&quot;#&quot;>Remove Step</a>        </div></div><!-- nested fields -->" href="#">+ Add Instruction</a>
+            <%= form.fields_for :steps do |steps_form| %>
+                <%= render "step_fields", f: steps_form %>
+            <% end %>
+            <%= link_to_add_fields "Add Step", form, :steps %>
         </div>
-        <input id="newRecipeSubmit" type="submit" name="commit" value="Submit" data-disable-with="Submit">
+        <%= form.submit id: "newRecipeSubmit"%>
     </div>
-
-  
-</form>
-
+<% end %>
