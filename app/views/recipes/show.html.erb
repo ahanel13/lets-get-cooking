@@ -9,10 +9,12 @@
   <div class="rightColumn">
     <div class="ShowName">
       <p>
-        <strong>Name:</strong>
+        <strong></strong>
         <%= @recipe.name %>
       </p>
     </div>
+
+    <hr>
 
     <p>
       <strong>Preptime:</strong>
@@ -29,7 +31,10 @@
       <%= @recipe.serving %>
     </p>
 
-    <p><%= @recipe.description%></p>
+    <p>
+      <strong>Description</strong>
+      <%= @recipe.description%>
+    </p>
 
     <h3>Instructions</h3>
       <ol>
