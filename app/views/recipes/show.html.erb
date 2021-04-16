@@ -1,39 +1,46 @@
 <%= javascript_pack_tag 'recipes' %>
+<div id="RecipeShow">
+<div id="rightColumn">
+  <div class="ShowName">
+    <p>
+      <strong>Name:</strong>
+      <%= @recipe.name %>
+    </p>
+  </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @recipe.name %>
-</p>
+  <p>
+    <strong>Preptime:</strong>
+    <%= @recipe.preptime %>
+  </p>
 
-<p>
-  <strong>Preptime:</strong>
-  <%= @recipe.preptime %>
-</p>
+  <p>
+    <strong>Cooktime:</strong>
+    <%= @recipe.cooktime %>
+  </p>
 
-<p>
-  <strong>Cooktime:</strong>
-  <%= @recipe.cooktime %>
-</p>
+  <p>
+    <strong>Serving:</strong>
+    <%= @recipe.serving %>
+  </p>
 
-<p>
-  <strong>Serving:</strong>
-  <%= @recipe.serving %>
-</p>
+  <p><%= @recipe.description%></p>
 
-<img src=<%=(url_for(@recipe.image))%>>
+  <h3>Instructions</h3>
+    <ol>
+      <% for @step in @recipe.steps %>
+        <li><%= @step.instruction %></li>
+      <% end %>
+    </ol>
+</div>
 
-<p><%= @recipe.description%></p>
-
-
-<h3>Instructions</h3>
-  <ol>
-    <% for @step in @recipe.steps %>
-      <li><%= @step.instruction %></li>
-    <% end %>
-  </ol>
-
+<div id="leftColumn">
+  <div id="ShowImage">
+    <img src=<%=(url_for(@recipe.image))%> width="300">
+  </div>
+</div>
+</div>
 <%# Comment Section %>
-<div>
+<div id="ShowComments">
   <h2>Comments<h2>
   
   <%# only signed in users are able to add comments %>
