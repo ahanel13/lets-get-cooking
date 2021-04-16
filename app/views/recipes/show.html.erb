@@ -4,6 +4,13 @@
     <div id="ShowImage">
       <img src=<%=(url_for(@recipe.image))%> width="300">
     </div>
+
+    <h3>Ingredients</h3>
+    <ol>
+      <% for @recipe_ingredient in @recipe.recipe_ingredients %>
+        <li><%= @recipe_ingredient.quantity%> <%= @recipe_ingredient.unit.name%> <%= @recipe_ingredient.ingredient.name%> </li>
+      <% end %>
+    </ol>
   </div>
   
   <div class="rightColumn">
@@ -16,23 +23,29 @@
 
     <hr>
 
-    <p>
-      <strong>Preptime:</strong>
-      <%= @recipe.preptime %>
-    </p>
+    <div class="ShowDetails">
+      <p>
+        <strong>Preptime:</strong>
+        <%= @recipe.preptime %>
+        minutes
+      </p>
+
+      <p>
+        <strong>Cooktime:</strong>
+        <%= @recipe.cooktime %>
+        minutes
+      </p>
+
+      <p>
+        <strong>Serving:</strong>
+        <%= @recipe.serving %>
+      </p>
+    </div>
+
+    <hr>
 
     <p>
-      <strong>Cooktime:</strong>
-      <%= @recipe.cooktime %>
-    </p>
-
-    <p>
-      <strong>Serving:</strong>
-      <%= @recipe.serving %>
-    </p>
-
-    <p>
-      <strong>Description</strong>
+      <h3>Description</h3>
       <%= @recipe.description%>
     </p>
 
@@ -44,13 +57,7 @@
       </ol>
   </div>
 
-  <h3>Ingredients</h3>
-  <ol>
-    <% for @recipe_ingredient in @recipe.recipe_ingredients %>
-      <li><%= @recipe_ingredient.quantity%> <%= @recipe_ingredient.unit.name%> <%= @recipe_ingredient.ingredient.name%> </li>
-    <% end %>
-  </ol>
-
+</div>
 <%# Comment Section %>
 <div id="ShowComments">
   <h2>Comments<h2>
