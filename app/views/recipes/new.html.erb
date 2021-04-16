@@ -1,31 +1,32 @@
 <form action="/recipes" accept-charset="UTF-8" method="post" enctype="multipart/form-data">
 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <div id="leftColumn"> 
-        <div id="ImageUpload">
-            <input type="file" name="recipe[image]" id="recipe_image" accept="image/*">
-        </div>
-        <br>
-        <h3>Ingredients</h3>
+    <div class="RecipeShow">
+        <div class="leftColumn"> 
+            <div id="ImageUpload">
+                <input type="file" name="recipe[image]" id="recipe_image" accept="image/*">
+            </div>
+            <br>
+            <h3>Ingredients</h3>
 
-        <%= link_to 'Back', recipes_path %>
-    </div>
-    <div id="rightColumn">
-        <input type="text" name="recipe[name]" id="recipe_name" placeholder="Enter Recipe Title" autocomplete="off">
-        <h2>Description<h2>
-        <input type="textarea" name="recipe[description]" id="recipe_description">
-        
-        <div id="addRecipeMetaData">
-            <input type="number" name="recipe[preptime]" class="recipe_meta_data" id="recipe_preptime" placeholder="Enter Preptime (min)" autocomplete="off">
-            <input type="number" name="recipe[cooktime]" class="recipe_meta_data" id="recipe_cooktime" placeholder="Enter Cooktime (min)" autocomplete="off">
-            <input type="number" name="recipe[serving]" class="recipe_meta_data" id="recipe_serving" placeholder="Enter Serving" autocomplete="off">
-        <div>
-        <h3>Instructions</h3>
-        <div id="addInstructionsContainer">
-            <a class="add_fields" data-id="24200" data-fields="<div class=&quot;nested-fields&quot;>        <input type=&quot;hidden&quot; value=&quot;false&quot; name=&quot;recipe[steps_attributes][24200][_destroy]&quot; id=&quot;recipe_steps_attributes_24200__destroy&quot; />        <div>            <input type=&quot;text&quot; name=&quot;recipe[steps_attributes][24200][instruction]&quot; id=&quot;recipe_steps_attributes_24200_instruction&quot; />            <a class=&quot;remove_fields&quot; href=&quot;#&quot;>Remove Step</a>        </div></div><!-- nested fields -->" href="#">+ Add Instruction</a>
+            <%= link_to 'Back', recipes_path %>
         </div>
-        <input id="newRecipeSubmit" type="submit" name="commit" value="Submit" data-disable-with="Submit">
+        <div class="rightColumn">
+            <input type="text" name="recipe[name]" id="recipe_name" placeholder="Enter Recipe Title" autocomplete="off">
+            <h2>Description<h2>
+            <input type="textarea" name="recipe[description]" id="recipe_description">
+            
+            <div id="addRecipeMetaData">
+                <input type="number" name="recipe[preptime]" class="recipe_meta_data" id="recipe_preptime" placeholder="Enter Preptime (min)" autocomplete="off">
+                <input type="number" name="recipe[cooktime]" class="recipe_meta_data" id="recipe_cooktime" placeholder="Enter Cooktime (min)" autocomplete="off">
+                <input type="number" name="recipe[serving]" class="recipe_meta_data" id="recipe_serving" placeholder="Enter Serving" autocomplete="off">
+            <div>
+            <h3>Instructions</h3>
+            <div id="addInstructionsContainer">
+                <a class="add_fields" data-id="24200" data-fields="<div class=&quot;nested-fields&quot;>        <input type=&quot;hidden&quot; value=&quot;false&quot; name=&quot;recipe[steps_attributes][24200][_destroy]&quot; id=&quot;recipe_steps_attributes_24200__destroy&quot; />        <div>            <input type=&quot;text&quot; name=&quot;recipe[steps_attributes][24200][instruction]&quot; id=&quot;recipe_steps_attributes_24200_instruction&quot; />            <a class=&quot;remove_fields&quot; href=&quot;#&quot;>Remove Step</a>        </div></div><!-- nested fields -->" href="#">+ Add Instruction</a>
+            </div>
+            <input id="newRecipeSubmit" type="submit" name="commit" value="Submit" data-disable-with="Submit">
+        </div>
     </div>
-
   
 </form>
 

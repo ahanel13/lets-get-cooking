@@ -1,43 +1,45 @@
 <%= javascript_pack_tag 'recipes' %>
-<div id="RecipeShow">
-<div id="rightColumn">
-  <div class="ShowName">
+<div class="RecipeShow">
+  <div class="leftColumn">
+    <div id="ShowImage">
+      <img src=<%=(url_for(@recipe.image))%> width="300">
+    </div>
+  </div>
+  
+  <div class="rightColumn">
+    <div class="ShowName">
+      <p>
+        <strong>Name:</strong>
+        <%= @recipe.name %>
+      </p>
+    </div>
+
     <p>
-      <strong>Name:</strong>
-      <%= @recipe.name %>
+      <strong>Preptime:</strong>
+      <%= @recipe.preptime %>
     </p>
+
+    <p>
+      <strong>Cooktime:</strong>
+      <%= @recipe.cooktime %>
+    </p>
+
+    <p>
+      <strong>Serving:</strong>
+      <%= @recipe.serving %>
+    </p>
+
+    <p><%= @recipe.description%></p>
+
+    <h3>Instructions</h3>
+      <ol>
+        <% for @step in @recipe.steps %>
+          <li><%= @step.instruction %></li>
+        <% end %>
+      </ol>
   </div>
 
-  <p>
-    <strong>Preptime:</strong>
-    <%= @recipe.preptime %>
-  </p>
-
-  <p>
-    <strong>Cooktime:</strong>
-    <%= @recipe.cooktime %>
-  </p>
-
-  <p>
-    <strong>Serving:</strong>
-    <%= @recipe.serving %>
-  </p>
-
-  <p><%= @recipe.description%></p>
-
-  <h3>Instructions</h3>
-    <ol>
-      <% for @step in @recipe.steps %>
-        <li><%= @step.instruction %></li>
-      <% end %>
-    </ol>
-</div>
-
-<div id="leftColumn">
-  <div id="ShowImage">
-    <img src=<%=(url_for(@recipe.image))%> width="300">
-  </div>
-</div>
+  
 </div>
 <%# Comment Section %>
 <div id="ShowComments">
