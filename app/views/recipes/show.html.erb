@@ -1,7 +1,7 @@
 <%= javascript_pack_tag 'recipes' %>
 <div class="RecipeShow">
   <div class="leftColumn">
-    <div id="ShowImage">
+    <div class="ShowImage">
       <img src=<%=(url_for(@recipe.image))%> width="300">
     </div>
 
@@ -44,10 +44,12 @@
 
     <hr>
 
-    <p>
-      <h3>Description</h3>
-      <%= @recipe.description%>
-    </p>
+    <div class="ShowDescription">
+      <p>
+        <h3>Description</h3>
+        <%= @recipe.description%>
+      </p>
+    </div>
 
     <h3>Instructions</h3>
       <ol>
@@ -59,7 +61,7 @@
 
 </div>
 <%# Comment Section %>
-<div id="ShowComments">
+<div class="ShowComments">
   <h2>Comments<h2>
   
   <%# only signed in users are able to add comments %>
