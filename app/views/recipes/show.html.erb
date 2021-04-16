@@ -44,8 +44,13 @@
       </ol>
   </div>
 
-  
-</div>
+  <h3>Ingredients</h3>
+  <ol>
+    <% for @recipe_ingredient in @recipe.recipe_ingredients %>
+      <li><%= @recipe_ingredient.quantity%> <%= @recipe_ingredient.unit.name%> <%= @recipe_ingredient.ingredient.name%> </li>
+    <% end %>
+  </ol>
+
 <%# Comment Section %>
 <div id="ShowComments">
   <h2>Comments<h2>
