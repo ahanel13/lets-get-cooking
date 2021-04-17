@@ -82,10 +82,10 @@ ActiveRecord::Schema.define(version: 2021_04_10_032410) do
   end
 
   create_table "recipes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "preptime", null: false
-    t.integer "cooktime", null: false
-    t.integer "serving", null: false
+    t.string "name"
+    t.integer "preptime"
+    t.integer "cooktime"
+    t.integer "serving"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "approved", default: false
@@ -101,9 +101,11 @@ ActiveRecord::Schema.define(version: 2021_04_10_032410) do
   end
 
   create_table "tags", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name"
+    t.string "tag"
+    t.uuid "recipes_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipes_id"], name: "index_tags_on_recipes_id"
   end
 
   create_table "units", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
