@@ -4,15 +4,14 @@ class RecipesController < ApplicationController
   # GET /recipes or /recipes.json
   def index
     @recipes = Recipe.all
-    puts @recipes.inspect
-      puts "+++===+++=+====+=====++===++++++++++=====++===+======="
-      puts params.inspect
+    @ingredients = Ingredient.all
+
     
     if params[:search_by_name] && params[:search_by_name] != ""
-      puts "+++===+++=+====+=====++===++++++++++=====++===+======="
       @recipes = @recipes.where("name ILIKE ?", params[:search_by_name])
     end
         
+    puts Ingredient.order(:name)
 
   end
 
@@ -78,6 +77,7 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:name, :preptime, :cooktime, :serving, :description, :image, steps_attributes:[:id, :instruction, :_destroy], recipe_ingredients_attributes:[:id, :unit_id, :quantity, :ingredient_id, :recipe_id, :_destroy])
+      # params.require(:recipe).permit(:name, :preptime, :cooktime, :serving, :description, :image, steps_attributes:[:id, :instruction, :_destroy], recipe_ingredients_attributes:[:id, :unit_id, :quantity, :ingredient_id, :recipe_id, :_destroy], search_by_ingredients: [])
+      params.permit(:name, :preptime, :cooktime, :serving, :description, :image, steps_attributes:[:id, :instruction, :_destroy], recipe_ingredients_attributes:[:id, :unit_id, :quantity, :ingredient_id, :recipe_id, :_destroy], search_by_ingredients: [])
     end
 end
