@@ -1,56 +1,75 @@
 <%= javascript_pack_tag 'recipes' %>
 <div class="RecipeShow">
   <div class="leftColumn">
-    <div class="ShowImage">
-      <img src=<%=(url_for(@recipe.image))%> width="300">
-    </div>
-
-    <h3>Ingredients</h3>
-    <ol>
-      <% for @recipe_ingredient in @recipe.recipe_ingredients %>
-        <li><%= @recipe_ingredient.quantity%> <%= @recipe_ingredient.unit.name%> <%= @recipe_ingredient.ingredient.name%> </li>
+    <%= image_tag "printing.png", id: "printerIcon", onClick: "window.print()"%>
+    <%if user_signed_in? %>
+      <%= form_for(current_user, as: current_user, url: registration_path(current_user), html: { method: :put }) do |form| %>
+        <%if current_user.saved_recipes.include?(@recipe.id)%>
+          <%(current_user.saved_recipes.delete(@recipe.id))%> 
+          <%= form.hidden_field :saved_recipes, name: "user[saved_recipes][]",  value: current_user.saved_recipes.compact%>
+          <%= form.submit "", :type => "image", :src => asset_path('filledheart.png'), id: "FilledHeartIcon"%>
+        <% else %>
+          <%(current_user.saved_recipes.push(@recipe.id))%> 
+          <%= form.hidden_field :saved_recipes, name: "user[saved_recipes][]",  value: current_user.saved_recipes.compact%>
+          <%= form.submit "", :type => "image", :src => asset_path('heart.png'), id: "FilledHeartIcon"%>
+        <% end %>
       <% end %>
-    </ol>
+    <% else %>
+        <a href="<%=new_user_session_path%>" onclick="alert('You need to be signed in to save a recipe')"><%= image_tag "heart.png", id: "FilledHeartIcon"%></a>
+    <% end %>
+
+    <div class="ShowImage">
+      <img src=<%=(url_for(@recipe.image))%>>
+    </div>
+    <div class="RecipeShowIngredients">
+      <h3>Ingredients</h3>
+      <ol>
+        <% for @recipe_ingredient in @recipe.recipe_ingredients %>
+          <li><%= @recipe_ingredient.quantity%> <%= @recipe_ingredient.unit.name%> <%= @recipe_ingredient.ingredient.name%> </li>
+        <% end %>
+      </ol>
+    </div>
   </div>
   
   <div class="rightColumn">
-    <div class="ShowName">
-      <p>
-        <strong></strong>
-        <%= @recipe.name %>
-      </p>
+    <div class="RecipeRightTopHalf">
+      <div class="ShowName">
+        <p>
+          <strong></strong>
+          <%= @recipe.name %>
+        </p>
+      </div>
+
+      <hr>
+
+      <div class="ShowDetails">
+        <p>
+          <strong>Preptime:</strong>
+          <%= @recipe.preptime %>
+          minutes
+        </p>
+
+        <p>
+          <strong>Cooktime:</strong>
+          <%= @recipe.cooktime %>
+          minutes
+        </p>
+
+        <p>
+          <strong>Serving:</strong>
+          <%= @recipe.serving %>
+        </p>
+      </div>
+
+      <hr>
+
+      <div class="ShowDescription">
+        <p>
+          <h3>Description</h3>
+          <%= @recipe.description%>
+        </p>
+      </div>
     </div>
-
-    <hr>
-
-    <div class="ShowDetails">
-      <p>
-        <strong>Preptime:</strong>
-        <%= @recipe.preptime %>
-        minutes
-      </p>
-
-      <p>
-        <strong>Cooktime:</strong>
-        <%= @recipe.cooktime %>
-        minutes
-      </p>
-
-      <p>
-        <strong>Serving:</strong>
-        <%= @recipe.serving %>
-      </p>
-    </div>
-
-    <hr>
-
-    <div class="ShowDescription">
-      <p>
-        <h3>Description</h3>
-        <%= @recipe.description%>
-      </p>
-    </div>
-
     <h3>Instructions</h3>
       <ol>
         <% for @step in @recipe.steps %>
