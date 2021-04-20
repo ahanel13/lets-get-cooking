@@ -2,17 +2,20 @@
 <div class="RecipeShow">
   <div class="leftColumn">
     <%= image_tag "printing.png", id: "printerIcon", onClick: "window.print()"%>
+    <%= image_tag "filledheart.png", id: "FilledHeartIcon"%>
+    <%= image_tag "heart.png", id: "EmptyHeartIcon"%>
 
     <div class="ShowImage">
       <img src=<%=(url_for(@recipe.image))%>>
     </div>
-
-    <h3>Ingredients</h3>
-    <ol>
-      <% for @recipe_ingredient in @recipe.recipe_ingredients %>
-        <li><%= @recipe_ingredient.quantity%> <%= @recipe_ingredient.unit.name%> <%= @recipe_ingredient.ingredient.name%> </li>
-      <% end %>
-    </ol>
+    <div class="RecipeShowIngredients">
+      <h3>Ingredients</h3>
+      <ol>
+        <% for @recipe_ingredient in @recipe.recipe_ingredients %>
+          <li><%= @recipe_ingredient.quantity%> <%= @recipe_ingredient.unit.name%> <%= @recipe_ingredient.ingredient.name%> </li>
+        <% end %>
+      </ol>
+    </div>
   </div>
   
   <div class="rightColumn">
