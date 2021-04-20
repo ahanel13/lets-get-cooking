@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_19_175225) do
+ActiveRecord::Schema.define(version: 2021_04_20_173829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -84,10 +84,10 @@ ActiveRecord::Schema.define(version: 2021_04_19_175225) do
   end
 
   create_table "recipes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name"
-    t.integer "preptime"
-    t.integer "cooktime"
-    t.integer "serving"
+    t.string "name", null: false
+    t.integer "preptime", null: false
+    t.integer "cooktime", null: false
+    t.integer "serving", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "approved", default: false
@@ -103,11 +103,9 @@ ActiveRecord::Schema.define(version: 2021_04_19_175225) do
   end
 
   create_table "tags", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "tag"
-    t.uuid "recipes_id"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["recipes_id"], name: "index_tags_on_recipes_id"
   end
 
   create_table "units", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -129,6 +127,7 @@ ActiveRecord::Schema.define(version: 2021_04_19_175225) do
     t.boolean "supervisor_role", default: false
     t.boolean "user_role", default: true
     t.string "username"
+    t.uuid "saved_recipes", default: [], array: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -2,8 +2,21 @@
 <div class="RecipeShow">
   <div class="leftColumn">
     <%= image_tag "printing.png", id: "printerIcon", onClick: "window.print()"%>
-    <%= image_tag "filledheart.png", id: "FilledHeartIcon"%>
-    <%= image_tag "heart.png", id: "EmptyHeartIcon"%>
+    <%if user_signed_in? %>
+      <%= form_for(current_user, as: current_user, url: registration_path(current_user), html: { method: :put }) do |form| %>
+        <%if current_user.saved_recipes.include?(@recipe.id)%>
+          <%(current_user.saved_recipes.delete(@recipe.id))%> 
+          <%= form.hidden_field :saved_recipes, name: "user[saved_recipes][]",  value: current_user.saved_recipes.compact%>
+          <%= form.submit "", :type => "image", :src => asset_path('filledheart.png'), id: "FilledHeartIcon"%>
+        <% else %>
+          <%(current_user.saved_recipes.push(@recipe.id))%> 
+          <%= form.hidden_field :saved_recipes, name: "user[saved_recipes][]",  value: current_user.saved_recipes.compact%>
+          <%= form.submit "", :type => "image", :src => asset_path('heart.png'), id: "FilledHeartIcon"%>
+        <% end %>
+      <% end %>
+    <% else %>
+        <a href="<%=new_user_session_path%>" onclick="alert('You need to be signed in to save a recipe')"><%= image_tag "heart.png", id: "FilledHeartIcon"%></a>
+    <% end %>
 
     <div class="ShowImage">
       <img src=<%=(url_for(@recipe.image))%>>
