@@ -4,9 +4,14 @@ class RecipesController < ApplicationController
   # GET /recipes or /recipes.json
   def index
     @recipes = Recipe.all
-    @ingredients = Ingredient.all
 
+    puts "35234542352435234"*20
+    puts params[:search_by_ingredients]
     
+    if params[:search_by_ingredients] && params[:search_by_name].compact != []
+      @recipes = @recipes.where("name LIKE ?", "%#{params[:search_by_name]}%")
+    end
+
     if params[:search_by_name] && params[:search_by_name] != ""
       @recipes = @recipes.where("name LIKE ?", "%#{params[:search_by_name]}%")
     end
