@@ -8,7 +8,7 @@ class RecipesController < ApplicationController
 
     
     if params[:search_by_name] && params[:search_by_name] != ""
-      @recipes = @recipes.where("name ILIKE ?", params[:search_by_name])
+      @recipes = @recipes.where("name LIKE ?", "%#{params[:search_by_name]}%")
     end
         
     puts Ingredient.order(:name)

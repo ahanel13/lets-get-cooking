@@ -2,14 +2,14 @@
 <div id="CurrentPantry">
 
 </div>
-<%= form_with do |form|%>
+<%= form_tag "/recipes", method: "GET" do %>
 
   <%#= form.collection_select :search_by_ingredient, Ingredient.order(:name), :id, :name, {multiple: true} %>
-  <%= form.select "search_by_ingredients[]", options_for_select(@ingredients.map{ |i| [i.name, i.id] }, :name), {multiple: true} %>
-  <%= form.select "search_by_ingredients[]", options_for_select(@ingredients.map{ |i| [i.name, i.id] }, :name), {multiple: true} %>
+  <%#= form.select "search_by_ingredients[]", options_for_select(@ingredients.map{ |i| [i.name, i.id] }, :name), {multiple: true} %>
+  <%#= form.select "search_by_ingredients[]", options_for_select(@ingredients.map{ |i| [i.name, i.id] }, :name), {multiple: true} %>
 
   <%= label_tag :search_by_name %>
-  <%= text_field_tag :search_by_name, params[:search_by_name] %>
+  <%= text_field_tag :search_by_name, params[:search_by_name], autocomplete: "off"%>
 
   <%= submit_tag "Search" %>
 <% end %>
