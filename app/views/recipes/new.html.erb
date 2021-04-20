@@ -9,40 +9,41 @@
         </ul>
       </div>
     <% end %>
+    <div id="NewRecipe"> 
+      <div class="leftColumn"> 
+          <div id="ImageUpload">
+              <%= form.file_field :image, :required => true, accept: "image/*"%>
+          </div>
+          <br>
+          <h3>Ingredients</h3>
+          <%= form.fields_for :recipe_ingredients do |recipe_ingredients_form| %>
+              <%= render "ingredient_fields", f: recipe_ingredients_form %>
+          <% end %>
+          <%= link_to_add_fields "Add Ingredient", form, :recipe_ingredients %>
 
-    <div id="leftColumn"> 
-        <div id="ImageUpload">
-            <%= form.file_field :image, :required => true, accept: "image/*"%>
-        </div>
-        <br>
-        <h3>Ingredients</h3>
-        <%= form.fields_for :recipe_ingredients do |recipe_ingredients_form| %>
-            <%= render "ingredient_fields", f: recipe_ingredients_form %>
-        <% end %>
-        <%= link_to_add_fields "Add Ingredient", form, :recipe_ingredients %>
+          <%= link_to 'Back', recipes_path %>
+      </div>
 
-        <%= link_to 'Back', recipes_path %>
-    </div>
+      <div class="rightColumn">
+          <%= form.text_field :name, placeholder:"Enter Recipe Title", autocomplete: "off"%>
 
-    <div id="rightColumn">
-        <%= form.text_field :name, placeholder:"Enter Recipe Title", autocomplete: "off"%>
+          <h2>Description<h2>
+          <%= form.text_field :description, :required => true, placeholder: "Add a recipe description" %>
 
-        <h2>Description<h2>
-        <%= form.text_field :description, :required => true, placeholder: "Add a recipe description" %>
+          <div id="addRecipeMetaData">
+              <%= form.text_field :preptime, class: "recipe_meta_data", type: "number", :required => true, placeholder: "Enter Preptime (min)",   autocomplete: "off" %>
+              <%= form.text_field :cooktime, class: "recipe_meta_data", type: "number", :required => true, placeholder: "Enter Cooktime (min)",   autocomplete: "off" %>
+              <%= form.text_field :serving,  class: "recipe_meta_data", type: "number", :required => true, placeholder: "Enter Serving",          autocomplete: "off" %>
+          </div>
 
-        <div id="addRecipeMetaData">
-            <%= form.text_field :preptime, class: "recipe_meta_data", type: "number", :required => true, placeholder: "Enter Preptime (min)",   autocomplete: "off" %>
-            <%= form.text_field :cooktime, class: "recipe_meta_data", type: "number", :required => true, placeholder: "Enter Cooktime (min)",   autocomplete: "off" %>
-            <%= form.text_field :serving,  class: "recipe_meta_data", type: "number", :required => true, placeholder: "Enter Serving",          autocomplete: "off" %>
-        </div>
-
-        <h3>Instructions</h3>
-        <div id="addInstructionsContainer">
-            <%= form.fields_for :steps do |steps_form| %>
-                <%= render "step_fields", f: steps_form %>
-            <% end %>
-            <%= link_to_add_fields "Add Step", form, :steps %>
-        </div>
-        <%= form.submit id: "newRecipeSubmit"%>
+          <h3>Instructions</h3>
+          <div id="addInstructionsContainer">
+              <%= form.fields_for :steps do |steps_form| %>
+                  <%= render "step_fields", f: steps_form %>
+              <% end %>
+              <%= link_to_add_fields "Add Step", form, :steps %>
+          </div>
+          <%= form.submit id: "newRecipeSubmit"%>
+      </div>
     </div>
 <% end %>
