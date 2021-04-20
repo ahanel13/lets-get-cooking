@@ -1,47 +1,74 @@
 <%= javascript_pack_tag 'recipes' %>
+<div class="RecipeShow">
+  <div class="leftColumn">
+    <div class="ShowImage">
+      <img src=<%=(url_for(@recipe.image))%> width="300">
+    </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @recipe.name %>
-</p>
+    <h3>Ingredients</h3>
+    <ol>
+      <% for @recipe_ingredient in @recipe.recipe_ingredients %>
+        <li><%= @recipe_ingredient.quantity%> <%= @recipe_ingredient.unit.name%> <%= @recipe_ingredient.ingredient.name%> </li>
+      <% end %>
+    </ol>
+  </div>
+  
+  <div class="rightColumn">
+    <div class="ShowName">
+      <p>
+        <strong></strong>
+        <%= @recipe.name %>
+      </p>
+    </div>
 
-<p>
-  <strong>Preptime:</strong>
-  <%= @recipe.preptime %>
-</p>
+    <hr>
 
-<p>
-  <strong>Cooktime:</strong>
-  <%= @recipe.cooktime %>
-</p>
+    <div class="ShowDetails">
+      <p>
+        <strong>Preptime:</strong>
+        <%= @recipe.preptime %>
+        minutes
+      </p>
 
-<p>
-  <strong>Serving:</strong>
-  <%= @recipe.serving %>
-</p>
+      <p>
+        <strong>Cooktime:</strong>
+        <%= @recipe.cooktime %>
+        minutes
+      </p>
 
-<img src=<%=(url_for(@recipe.image))%>>
+      <p>
+        <strong>Serving:</strong>
+        <%= @recipe.serving %>
+      </p>
+    </div>
 
-<p><%= @recipe.description%></p>
+    <hr>
 
+    <div class="ShowDescription">
+      <p>
+        <h3>Description</h3>
+        <%= @recipe.description%>
+      </p>
+    </div>
 
-<h3>Instructions</h3>
-  <ol>
-    <% for @step in @recipe.steps %>
-      <li><%= @step.instruction %></li>
-    <% end %>
-  </ol>
+    <h3>Instructions</h3>
+      <ol>
+        <% for @step in @recipe.steps %>
+          <li><%= @step.instruction %></li>
+        <% end %>
+      </ol>
+  </div>
 
-  <h3>Ingredients</h3>
-  <ol>
-    <% for @recipe_ingredient in @recipe.recipe_ingredients %>
-      <li><%= @recipe_ingredient.quantity%> <%= @recipe_ingredient.unit.name%> <%= @recipe_ingredient.ingredient.name%> </li>
-    <% end %>
-  </ol>
-
+</div>
 <%# Comment Section %>
+<<<<<<< HEAD
+<div class="ShowComments">
+  <h2>Comments<h2>
+  
+=======
 <div id="CommentSection">
 
+>>>>>>> main
   <%# only signed in users are able to add comments %>
   <% if user_signed_in? %>
     <h2>Comments</h2>

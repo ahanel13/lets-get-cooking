@@ -2,23 +2,38 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-#leftColumn {
+
+.RecipeShow{
+    display: flex;
+    min-height: 0vh;
+}
+
+.leftColumn {
     width: 40vw;
+    height: auto;
     left: 0;
-    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    .ShowImage{
+        margin: 10vh;
+        margin-bottom: 5vh;
+    }
 }
 
-#rightColumn {
+.rightColumn {
     width: 60vw;
+    height: auto;
     right: 0;
-    position: absolute;
     display: flex;
     padding-top: 10vh;
     padding-right: 3vw;
     flex-direction: column;
+    hr {
+        background-color: black;
+        height: 1px;
+    }
 }
 
 #ImageUpload{
@@ -217,4 +232,33 @@ input {
     img {
         width: 25vw;
     }
+}
+
+.ShowName{
+    p {
+        font-size: 50px;
+        font-weight: bold;
+        text-align: center;
+    }
+}
+
+.ShowDetails{
+    text-align: center;
+    font-size: 30px;
+    display: flex;
+    margin-bottom: 1vh;
+    margin-top: 3vh;
+    p {
+        width: 100%;
+        font-size: 23px;
+    }
+}
+
+.ShowDescription{
+    min-height: 30vh;
+}
+
+.ShowComments{
+    margin: 10vh;
+    margin-top: 5vh;
 }
