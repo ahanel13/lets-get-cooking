@@ -3,14 +3,15 @@
 
 </div>
 <%= form_tag "/recipes", method: "GET" do %>
-  <%= label_tag :search_by_ingredient %>
-  <%= text_field_tag :search_by_ingredient, params[:search_by_ingredient] %>
+
+  <%= collection_select :search_by_ingredients, :ingredient_id, Ingredient.all, :id, :name, {} ,{:multiple => true} %>
 
   <%= label_tag :search_by_name %>
-  <%= text_field_tag :search_by_name, params[:search_by_name] %>
+  <%= text_field_tag :search_by_name, params[:search_by_name], autocomplete: "off"%>
 
   <%= submit_tag "Search" %>
 <% end %>
+
 <hr/>
 <div id="SearchResults">
     <% @recipes.each do |recipe| %>

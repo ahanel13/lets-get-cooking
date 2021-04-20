@@ -43,10 +43,13 @@
             </div>
           </li> %>
         </ul>
-        <form class="" id="NavSearchBar">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search for a recipe" aria-label="Search">
+        <%# <form class="" id="NavSearchBar"> %>
+        <%= form_tag "/recipes", method: "GET", id: "NavSearchBar" do %>
+          <%# <input class="form-control mr-sm-2" type="text" placeholder="Search for a recipe" aria-label="Search"> %>
+          <%= text_field_tag :search_by_name, params[:search_by_name], class: "form-control mr-sm-2", placeholder: "Search for a recipe", autocomplete: "off"%>
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <% end %>
+        <%# </form> %>
         <div id="RegisterLoginSection">
           <% if user_signed_in? %>
             <%= link_to image_tag("ProfileImage.png", :id => "ProfileIcon") ,account_path %>
