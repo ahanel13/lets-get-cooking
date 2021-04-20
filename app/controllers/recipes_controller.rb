@@ -19,7 +19,7 @@ class RecipesController < ApplicationController
   # GET /recipes/1 or /recipes/1.json
   def show
     puts @recipe.inspect
-    puts @recipe.comments
+    puts @recipe.comments.inspect
   end
 
   # GET /recipes/new
