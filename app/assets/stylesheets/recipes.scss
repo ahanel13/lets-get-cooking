@@ -231,6 +231,11 @@ input {
         
 #SearchResults{
     display: flex;
+    margin: 2vh 3vw;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    
     // add item spacing
 }
 
@@ -240,9 +245,12 @@ input {
     background-color: grey;
     border-radius: 15px;
     overflow: hidden;
+    margin: 25px;
 
     img {
         height: 100%;
+        width: 100%;
+        object-fit: cover;
     }
 
     .RecipeCardData{
