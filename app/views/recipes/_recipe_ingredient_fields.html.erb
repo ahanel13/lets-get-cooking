@@ -9,8 +9,6 @@
             <% ingredient_options = options_from_collection_for_select(@ingredients, 'id', 'name') %>
             <%= f.select :ingredient_id,  ingredient_options %>
 
-            <%= f.text_field :recipe_id, value: @recipe.id, type: "hidden" %>
-
             <%= link_to "Remove Ingredient", '#', class: "remove_fields" %>
         </div>
 </div><!-- nested fields -->

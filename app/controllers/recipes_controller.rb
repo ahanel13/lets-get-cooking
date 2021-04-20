@@ -3,21 +3,38 @@ class RecipesController < ApplicationController
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.all
+    @Allrecipes = Recipe.all
+    @recipesByName = Array.new
+    @recipesByIngredient = Array.new
+    @recipes = Array.new
 
-    puts "35234542352435234"*20
-    puts params[:search_by_ingredients]
+    if params[:search_by_ingredients] && params[:search_by_ingredients][:ingredient_id] != [""]
+      @Allrecipes.each do |recipe|
+        @recipesByIngredient.push(recipe)
+
+        @IngredientCheck = recipe.ingredients.select{|ingredient| params[:search_by_ingredients][:ingredient_id].include?(ingredient.id) == true}
+
+        if @IngredientCheck.length() != params[:search_by_ingredients][:ingredient_id].length()-1
+          @recipesByIngredient.delete(recipe)
+        end
+      end
+
+      if params[:search_by_name] && params[:search_by_name] != ""
+        @recipesByName = @Allrecipes.where("name LIKE ?", "%#{params[:search_by_name]}%")
+        @recipes = @recipesByName & @recipesByIngredient
+        puts "*"*100
+      
+      else
+        @recipes = @recipesByIngredient
+      end
+
+    elsif params[:search_by_name] && params[:search_by_name] != ""
+      @recipesByName = @Allrecipes.where("name LIKE ?", "%#{params[:search_by_name]}%")
+      @recipes = @recipesByName
     
-    if params[:search_by_ingredients] && params[:search_by_name].compact != []
-      @recipes = @recipes.where("name LIKE ?", "%#{params[:search_by_name]}%")
+    else
+      @recipes = @Allrecipes
     end
-
-    if params[:search_by_name] && params[:search_by_name] != ""
-      @recipes = @recipes.where("name LIKE ?", "%#{params[:search_by_name]}%")
-    end
-        
-    puts Ingredient.order(:name)
-
   end
 
   # GET /recipes/1 or /recipes/1.json
@@ -40,6 +57,7 @@ class RecipesController < ApplicationController
   # POST /recipes or /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
+    
 
     respond_to do |format|
       if @recipe.save
@@ -82,7 +100,7 @@ class RecipesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def recipe_params
-      # params.require(:recipe).permit(:name, :preptime, :cooktime, :serving, :description, :image, steps_attributes:[:id, :instruction, :_destroy], recipe_ingredients_attributes:[:id, :unit_id, :quantity, :ingredient_id, :recipe_id, :_destroy], search_by_ingredients: [])
-      params.permit(:name, :preptime, :cooktime, :serving, :description, :image, steps_attributes:[:id, :instruction, :_destroy], recipe_ingredients_attributes:[:id, :unit_id, :quantity, :ingredient_id, :recipe_id, :_destroy], search_by_ingredients: [])
+      params.require(:recipe).permit(:name, :preptime, :cooktime, :serving, :description, :image, steps_attributes:[:id, :instruction, :_destroy], recipe_ingredients_attributes:[:id, :unit_id, :quantity, :ingredient_id, :_destroy], search_by_ingredients: [])
+      # params.permit(:name, :preptime, :cooktime, :serving, :description, :image, steps_attributes:[:id, :instruction, :_destroy], recipe_ingredients_attributes:[:id, :unit_id, :quantity, :ingredient_id, :_destroy], search_by_ingredients: [])
     end
 end
