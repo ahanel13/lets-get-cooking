@@ -22,7 +22,7 @@ class RecipesController < ApplicationController
       end
 
       if params[:search_by_name] && params[:search_by_name] != ""
-        @recipesByName = @Allrecipes.where("name LIKE ?", "%#{params[:search_by_name]}%")
+        @recipesByName = @Allrecipes.where("name ILIKE ?", "%#{params[:search_by_name]}%")
         @recipes = @recipesByName & @recipesByIngredient
         puts "*"*100
       
@@ -31,7 +31,7 @@ class RecipesController < ApplicationController
       end
 
     elsif params[:search_by_name] && params[:search_by_name] != ""
-      @recipesByName = @Allrecipes.where("name LIKE ?", "%#{params[:search_by_name]}%")
+      @recipesByName = @Allrecipes.where("name ILIKE ?", "%#{params[:search_by_name]}%")
       @recipes = @recipesByName
     
     else
