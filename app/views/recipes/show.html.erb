@@ -1,8 +1,10 @@
 <%= javascript_pack_tag 'recipes' %>
 <div class="RecipeShow">
   <div class="leftColumn">
+    <%= image_tag "printing.png", id: "printerIcon", onClick: "window.print()"%>
+
     <div class="ShowImage">
-      <img src=<%=(url_for(@recipe.image))%> width="300">
+      <img src=<%=(url_for(@recipe.image))%>>
     </div>
 
     <h3>Ingredients</h3>
@@ -14,43 +16,44 @@
   </div>
   
   <div class="rightColumn">
-    <div class="ShowName">
-      <p>
-        <strong></strong>
-        <%= @recipe.name %>
-      </p>
+    <div class="RecipeRightTopHalf">
+      <div class="ShowName">
+        <p>
+          <strong></strong>
+          <%= @recipe.name %>
+        </p>
+      </div>
+
+      <hr>
+
+      <div class="ShowDetails">
+        <p>
+          <strong>Preptime:</strong>
+          <%= @recipe.preptime %>
+          minutes
+        </p>
+
+        <p>
+          <strong>Cooktime:</strong>
+          <%= @recipe.cooktime %>
+          minutes
+        </p>
+
+        <p>
+          <strong>Serving:</strong>
+          <%= @recipe.serving %>
+        </p>
+      </div>
+
+      <hr>
+
+      <div class="ShowDescription">
+        <p>
+          <h3>Description</h3>
+          <%= @recipe.description%>
+        </p>
+      </div>
     </div>
-
-    <hr>
-
-    <div class="ShowDetails">
-      <p>
-        <strong>Preptime:</strong>
-        <%= @recipe.preptime %>
-        minutes
-      </p>
-
-      <p>
-        <strong>Cooktime:</strong>
-        <%= @recipe.cooktime %>
-        minutes
-      </p>
-
-      <p>
-        <strong>Serving:</strong>
-        <%= @recipe.serving %>
-      </p>
-    </div>
-
-    <hr>
-
-    <div class="ShowDescription">
-      <p>
-        <h3>Description</h3>
-        <%= @recipe.description%>
-      </p>
-    </div>
-
     <h3>Instructions</h3>
       <ol>
         <% for @step in @recipe.steps %>

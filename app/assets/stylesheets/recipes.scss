@@ -25,6 +25,12 @@
     .ShowImage{
         margin: 10vh;
         margin-bottom: 5vh;
+        height: 50vh;
+        img {
+            width: 100%;
+            height: 100%;
+            border: 1px lightgray solid;
+        }
     }
 }
 
@@ -267,4 +273,18 @@ input {
 .ShowComments{
     margin: 10vh;
     margin-top: 5vh;
+}
+
+#printerIcon{
+    width: 30px;
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    margin-top: 25vh;
+    margin-left: 30px;
+}
+
+.RecipeRightTopHalf{
+    height: 50vh;
+    margin-bottom: 5vh;
 }
