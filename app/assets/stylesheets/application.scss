@@ -124,33 +124,54 @@ nav a, a:hover{
 #SideNav {
     width: 22vw;
     height: 90vh;
-    background-color: grey;
+    border-right: lightgray 2px solid;
     margin: 0;
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-left: 50px;
 }
 
 #MainContent {
     width: 78vw;
     height: 90vh;
-    background-color: lightblue;
     right: 0;
     margin: 0;
     position: absolute;
+
+    h1{
+       position: absolute;
+       margin-top: 25px;
+       margin-left: 5vw; 
+       font-weight: bolder;
+    }
 }
 
 .BasicContainer{
-    background-color: #ffbc39;
     width: 90%;
     height: 82%;
-    margin: 50px auto;
+    margin: 100px auto;
     border-radius: 20px;
+    border: 1px lightgray solid;
+    box-shadow: lightgray 1px 1px;
 }
 
 #SavedRecipes{
+
 }
 
 #SavedPantry{
+
 }
 
 #EditAccount{
+
+}
+
+#EditAccount{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10vw;
+    padding-top: 7vh;
 }

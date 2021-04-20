@@ -13,8 +13,26 @@
     </h1>
 
     <div id="SavedRecipes" class="BasicContainer">
-        <h2 style="color:black; font-size: 35px; text-align: center;font-weight: 350;">
-            No Saved Recipes Currently
-        </h2>
+        <%if current_user.saved_recipes == [""]%>
+            <h2 style="color:black; font-size: 35px; text-align: center;font-weight: 350;">
+                No Saved Ingredients Currently
+            </h2>
+        <% else %>
+        <div id="SearchResults">
+            <% current_user.saved_recipes.each do |recipe| %>
+            <%recipe = Recipe.find_by(:id => recipe)%>
+            <div class="RecipeCard">
+                <a href="<%= "/recipes/" + recipe.id %>">
+                <%= image_tag recipe.image%>
+                <div class="RecipeCardData">
+                    <h2><%= recipe.name %></h2>
+                    <div class="CardMetaData">
+                        <p> Prep: <%= recipe.preptime %> | Cooktime: <%= recipe.cooktime %> | Servings: <%= recipe.serving %></p>
+                    </div>
+                </div>
+                </a>
+            </div>
+            <% end %>
+        <% end %>
     </div>
 </div>
