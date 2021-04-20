@@ -110,20 +110,23 @@
       </div>
       <p><%=comment.comment%></p>
       <div>
-        <p class="LikeInfo">likes <%= comment.likes %></p>
-
-        <%= form_with(model: comment) do |form| %>
-          <% if comment.users_liked.include?(current_user.id)%>
-            <%= form.hidden_field :likes , value: (comment.likes - 1 >= 0 ? comment.likes - 1 : 0)%>
-            <%(comment.users_liked.delete(current_user.id))%>
-            <%= form.hidden_field :users_liked, name: "comment[users_liked][]",  value: comment.users_liked.compact%>
-            <%= form.submit "", :type => "image", :src => asset_path('filled-thumbs-up.png'), class: "ThumbsUp" %>
-          <% else %>
-            <%= form.hidden_field :likes , value: (comment.likes + 1)%>
-            <%comment.users_liked.push(current_user.id)%>
-            <%= form.hidden_field :users_liked, name: "comment[users_liked][]",  value: comment.users_liked.compact%>
-            <%= form.submit "", :type => "image", :src => asset_path('thumbs-up.png'), class: "ThumbsUp"%>
+        <%if user_signed_in?%>
+          <p class="LikeInfo">likes <%= comment.likes %></p>
+          <%= form_with(model: comment) do |form| %>
+            <% if comment.users_liked.include?(current_user.id)%>
+              <%= form.hidden_field :likes , value: (comment.likes - 1 >= 0 ? comment.likes - 1 : 0)%>
+              <%(comment.users_liked.delete(current_user.id))%>
+              <%= form.hidden_field :users_liked, name: "comment[users_liked][]",  value: comment.users_liked.compact%>
+              <%= form.submit "", :type => "image", :src => asset_path('filled-thumbs-up.png'), class: "ThumbsUp" %>
+            <% else %>
+              <%= form.hidden_field :likes , value: (comment.likes + 1)%>
+              <%comment.users_liked.push(current_user.id)%>
+              <%= form.hidden_field :users_liked, name: "comment[users_liked][]",  value: comment.users_liked.compact%>
+              <%= form.submit "", :type => "image", :src => asset_path('thumbs-up.png'), class: "ThumbsUp"%>
+            <% end %>
           <% end %>
+        <% else %>
+          <p class="LikeInfo">likes <%= comment.likes %> <a href="<%=new_user_session_path%>">Sign in to like</a></p>
         <% end %>
       </div>
     </div>
