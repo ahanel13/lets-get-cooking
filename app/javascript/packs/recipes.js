@@ -1,3 +1,3 @@
 window.clearCommentArea = function(){
-  document.getElementById("comment").value="";
+  document.getElementById("commentinput").value="";
 }
