@@ -26,12 +26,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = current_user
 
     if user_params[:saved_recipes] != [""]
-      @current_recipe = user_params[:saved_recipes].last
-
+      @current_recipe = (user_params[:saved_recipes] - @user.saved_recipes) | (@user.saved_recipes - user_params[:saved_recipes])
+      @current_recipe.compact!
+      @current_recipe = @current_recipe.last
     elsif
       @current_recipe = @user.saved_recipes.last
 
     end
+
+    puts "\n\ncurrent reicpe::#{@current_recipe}\n\n"
 
     # IF they've left the password field blank, 
     # AND the devise update_without_password method returns true
