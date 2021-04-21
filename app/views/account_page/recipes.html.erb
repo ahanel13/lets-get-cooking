@@ -13,15 +13,15 @@
     </h1>
 
     <div id="SavedRecipes" class="BasicContainer">
-        <%if current_user.saved_recipes == [""]%>
+        <%if current_user.saved_recipes.compact == [""]%>
             <h2 style="color:black; font-size: 35px; text-align: center;font-weight: 350;">
                 No Saved Ingredients Currently
             </h2>
         <% else %>
-        <div id="SearchResults">
-            <% current_user.saved_recipes.each do |recipe| %>
-            <%recipe = Recipe.find_by(:id => recipe)%>
-            <div class="RecipeCard">
+        <div id="AccountSavedRecipes">
+            <% current_user.saved_recipes.compact.each do |recipe| %>
+            <%recipe = Recipe.find_by(id: recipe)%>
+            <div class="AccountRecipeCard">
                 <a href="<%= "/recipes/" + recipe.id %>">
                 <%= image_tag recipe.image%>
                 <div class="RecipeCardData">
