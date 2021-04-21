@@ -2,3 +2,42 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+#AccountSavedRecipes{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    overflow-y: scroll;
+
+    .AccountRecipeCard{
+        width: 20vw;
+        height: 40vh;
+        background-color: grey;
+        border-radius: 15px;
+        overflow: hidden;
+        margin: 25px;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .RecipeCardData{
+            height: 100%;
+            margin-top: -100%;
+            padding-left: 20px;
+            padding-top: 30px;;
+            z-index: 100;
+            text-align: center;
+        }
+
+        h2{
+            color: white;
+            font-size: 60px;
+            font-weight: bold;
+        }
+    }
+}
