@@ -4,13 +4,23 @@
     <%= image_tag "printing.png", id: "printerIcon", onClick: "window.print()"%>
     <%if user_signed_in? %>
       <%= form_for(current_user, as: current_user, url: registration_path(current_user), html: { method: :put }) do |form| %>
-        <%if current_user.saved_recipes.include?(@recipe.id)%>
-          <%(current_user.saved_recipes.delete(@recipe.id))%> 
-          <%= form.hidden_field :saved_recipes, name: "user[saved_recipes][]",  value: current_user.saved_recipes.compact%>
+        <%if current_user.saved_recipes.include?(@recipe.id.strip)%>
+          <%(current_user.saved_recipes.delete(@recipe.id.strip))%> 
+          <% puts "\n\nrecipe[]: #{current_user.saved_recipes}\n\n"%> 
+
+          <%current_user.saved_recipes.each do |recipe_id|%>
+            <%= form.hidden_field :saved_recipes, name: "user[saved_recipes][]",  value: recipe_id%>
+          <% end %>
+
           <%= form.submit "", :type => "image", :src => asset_path('filledheart.png'), id: "FilledHeartIcon"%>
         <% else %>
-          <%(current_user.saved_recipes.push(@recipe.id))%> 
-          <%= form.hidden_field :saved_recipes, name: "user[saved_recipes][]",  value: current_user.saved_recipes.compact%>
+          <%(current_user.saved_recipes.push(@recipe.id.strip))%>
+          <% puts "\n\nrecipe[]#{@recipe.id.strip}:#{current_user.saved_recipes.compact}\n\n"%> 
+
+          <%current_user.saved_recipes.each do |recipe_id|%>
+            <%= form.hidden_field :saved_recipes, name: "user[saved_recipes][]",  value: recipe_id%>
+          <% end %>
+
           <%= form.submit "", :type => "image", :src => asset_path('heart.png'), id: "FilledHeartIcon"%>
         <% end %>
       <% end %>
